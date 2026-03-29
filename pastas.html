@@ -12,21 +12,20 @@
 <body>
     <div>
         <a href="/index.html"><button>SteamPasta</button></a>
-        <a href="/plusrep.html"><button>+REP</button></a>
-        <a href="/roasts.html"><button>ROASTS</button></a>
-        <a href="/nsfw.html" id="nsfw1"><button>NSFW</button></a>
+        <a href="/pastas.html?category=%2BREP"><button>+REP</button></a>
+        <a href="/pastas.html?category=ROASTS"><button>ROASTS</button></a>
+        <a href="/pastas.html?category=RANDOM"><button>RANDOM</button></a>
+        <a href="/pastas.html?category=CHRISTMAS"><button>CHRISTMAS</button></a>
+        <a href="/pastas.html?category=NSFW" id="nsfw1"><button>NSFW</button></a>
         <button id="smOn" style="color: red;" onclick="safeModeOn()">🔓 SAFE MODE</button>
         <button id="smOff" style="color: green;" onclick="safeModeOff()">🔒 SAFE MODE</button>
     </div>
 
-    <h1>SteamPasta: NSFW</h1>
+    <h1>SteamPasta</h1>
 
-    <script src="/scripts/safemode.js"></script>
+    <div id="container"></div>
 
-    <script>
-        if (safeMode){
-            window.location.href="/index.html";
-        }
-    </script>
+    <script src="scripts/safemode.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
