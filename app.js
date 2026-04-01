@@ -31,4 +31,9 @@ function renderPastas(data) {
         el.textContent = pasta.content;
         container.appendChild(el);
     });
+
+    const statusEl = document.getElementById("status-text");
+    if (statusEl) {
+        statusEl.textContent = filtered.length + " pasta(s) loaded";
+    }
 }

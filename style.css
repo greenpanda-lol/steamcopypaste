@@ -1,72 +1,442 @@
-body {
-    background-color: black;
+/* =============================================
+   SteamPasta — Windows 2000 / Classic Windows Theme
+   ============================================= */
 
-    font-family: "Iosevka Charon Mono", monospace;
-    color: white;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-h1 {
-    font-size: 300%;
+body {
+    background-color: #008080; /* Classic Win2k teal desktop */
+    background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='0' y='0' width='2' height='2' fill='%23007070' opacity='0.4'/%3E%3C/svg%3E");
+    font-family: "Tahoma", "MS Sans Serif", "Arial", sans-serif;
+    font-size: 11px;
+    color: #000000;
+    min-height: 100vh;
+    padding: 8px;
+}
+
+/* ── Taskbar / Navbar ── */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    box-shadow: inset 0 1px 0 #ffffff;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    gap: 2px;
+    z-index: 999;
+}
+
+#start-btn {
+    height: 22px;
+    padding: 0 6px 0 4px;
+    background: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+    box-shadow: inset 1px 1px 0 #e8e8e8;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #000;
+}
+
+#start-btn:active {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: none;
+}
+
+.taskbar-btn {
+    height: 22px;
+    padding: 0 8px;
+    background: #d4d0c8;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #808080;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.taskbar-btn:hover {
+    background: #c8c4bc;
+}
+
+.taskbar-sep {
+    width: 1px;
+    height: 20px;
+    background: #808080;
+    margin: 0 3px;
+    border-right: 1px solid #ffffff;
+}
+
+#taskbar-clock {
+    margin-left: auto;
+    height: 22px;
+    padding: 0 6px;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #808080;
+    display: flex;
+    align-items: center;
+    font-size: 11px;
+    min-width: 55px;
+    justify-content: center;
+}
+
+/* ── Main Window ── */
+#main-window {
+    max-width: 760px;
+    margin: 0 auto 40px auto;
+}
+
+/* Window chrome */
+.window {
+    background: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #404040;
+    border-right: 2px solid #404040;
+    box-shadow: 1px 1px 0 #808080, -1px -1px 0 #e8e8e8;
+    margin-bottom: 12px;
+}
+
+/* Title bar */
+.title-bar {
+    background: linear-gradient(to right, #0a246a, #3a6ea5);
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    user-select: none;
+}
+
+.title-bar-text {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.title-bar-icon {
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
+
+.title-bar-controls {
+    display: flex;
+    gap: 2px;
+}
+
+.tb-btn {
+    width: 16px;
+    height: 14px;
+    background: #d4d0c8;
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-bottom: 1px solid #808080;
+    border-right: 1px solid #808080;
+    font-size: 9px;
+    line-height: 1;
     text-align: center;
+    cursor: pointer;
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 1px;
+}
+
+.tb-btn:active {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+}
+
+/* Menu bar */
+.menu-bar {
+    background: #d4d0c8;
+    padding: 2px 4px;
+    border-bottom: 1px solid #808080;
+    display: flex;
+    gap: 0;
+}
+
+.menu-item {
+    padding: 2px 8px;
+    font-size: 11px;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.menu-item:hover {
+    background: #0a246a;
+    color: #fff;
+}
+
+/* Window body */
+.window-body {
+    padding: 8px;
+}
+
+/* ── H1 Title ── */
+h1 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000080;
+    text-align: center;
+    padding: 6px 0 4px;
+    font-family: "Tahoma", sans-serif;
 }
 
 h2 {
-    font-size: 200%;
-    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    font-family: "Tahoma", sans-serif;
 }
 
-.box {
-  border: 2px solid #333;
-  padding: 20px;
-  width: 700px;
-  max-width: 100%;
-
-  border-radius: 20px;
-  background-color: #000000;
-  box-shadow: 0 8px 8px #E7EAE5, 0 6px 25px #E7EAE5;
-
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-
-  text-align: center;
+/* ── Inset / sunken panel ── */
+.panel-sunken {
+    background: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+    padding: 8px 10px;
+    margin-bottom: 8px;
 }
 
-button{
-    border: 2px solid #333;
-    background-color: #000000;
-    color: white;
-    font-size: 200%;
+/* ── Warning box ── */
+.box-warning {
+    background: #ffffc0;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
 
-    font-family: "Iosevka Charon Mono", monospace;
+.box-warning .warn-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
 
+.box-warning p {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.box-warning strong {
+    color: #800000;
+}
+
+/* ── Submit box ── */
+.box-submit {
+    background: #e8ffe8;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+    padding: 8px 12px;
+    margin-top: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.box-submit .submit-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.box-submit p {
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* ── Category Grid ── */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 6px;
+    padding: 4px 0;
+}
+
+.category-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    text-decoration: none;
+    color: #000000;
+
+    background: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #404040;
+    border-right: 2px solid #404040;
+    box-shadow: inset 1px 1px 0 #e8e4e0, 1px 1px 0 #808080;
+
+    font-family: "Tahoma", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
     cursor: pointer;
+    transition: none;
 }
 
-.ptext {
-    font-family: "Motiva Sans","Arial","Helvetica","sans-serif";
+.category-btn:hover {
+    background: #c8c4bc;
 }
 
+.category-btn:active {
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #808080;
+    padding: 7px 9px 5px 11px;
+}
+
+.category-icon {
+    font-size: 18px;
+}
+
+/* ── Pasta container (pastas.html) ── */
 #container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin: 0 auto;
+    gap: 6px;
+    padding: 4px 0;
 }
 
-#container > * {
-  font-family: "Motiva Sans","Arial","Helvetica","sans-serif";
+#container > pre {
+    font-family: "Courier New", "Courier", monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    white-space: pre-wrap;
+    word-break: break-word;
 
-  border: 2px solid #333;
-  padding: 20px;
-  width: 700px;
-  max-width: 100%;
+    background: #ffffff;
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #404040;
+    padding: 8px 10px;
+}
 
-  border-radius: 20px;
-  background-color: #000000;
-  box-shadow: 0 8px 8px #E7EAE5, 0 6px 25px #E7EAE5;
+/* ── Classic Win2k button (used in nav) ── */
+button, .btn {
+    height: 23px;
+    padding: 0 10px;
+    background: #d4d0c8;
+    border-top: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #404040;
+    border-right: 2px solid #404040;
+    box-shadow: inset 1px 1px 0 #e8e4e0, 1px 1px 0 #808080;
+    font-family: "Tahoma", sans-serif;
+    font-size: 11px;
+    cursor: pointer;
+    color: #000000;
+    white-space: nowrap;
+}
 
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+button:active, .btn:active {
+    border-top: 2px solid #404040;
+    border-left: 2px solid #404040;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    box-shadow: inset 1px 1px 0 #808080;
+}
+
+button:hover, .btn:hover {
+    background: #c8c4bc;
+}
+
+/* Safe mode buttons */
+#smOn  { color: #cc0000; }
+#smOff { color: #006600; }
+
+/* Links */
+a {
+    color: #0000cc;
+    text-decoration: underline;
+}
+a:visited {
+    color: #551a8b;
+}
+a:hover {
+    color: #cc0000;
+}
+
+/* Status bar */
+.status-bar {
+    background: #d4d0c8;
+    border-top: 1px solid #808080;
+    padding: 2px 6px;
+    display: flex;
+    gap: 6px;
+    font-size: 10px;
+}
+
+.status-item {
+    border-top: 1px solid #808080;
+    border-left: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    padding: 1px 6px;
+    min-width: 120px;
+}
+
+/* Separator */
+.win-sep {
+    height: 2px;
+    border-top: 1px solid #808080;
+    border-bottom: 1px solid #ffffff;
+    margin: 6px 0;
 }
