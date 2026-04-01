@@ -3,80 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    </style>
     <link rel="stylesheet" href="style.css">
     <title>SteamPasta</title>
 </head>
 <body>
-    <div>
-        <a href="/index.html"><button>SteamPasta</button></a>
-        <a href="/pastas.html?category=%2BREP"><button>+REP</button></a>
-        <a href="/pastas.html?category=ROASTS"><button>ROASTS</button></a>
-        <a href="/pastas.html?category=RANDOM"><button>RANDOM</button></a>
-        <a href="/pastas.html?category=CHRISTMAS"><button>CHRISTMAS</button></a>
-        <a href="/pastas.html?category=NSFW" id="nsfw1"><button>NSFW</button></a>
-        <button id="smOn" style="color: red;" onclick="safeModeOn()">🔓 SAFE MODE</button>
-        <button id="smOff" style="color: green;" onclick="safeModeOff()">🔒 SAFE MODE</button>
-    </div>
 
-    <h1>SteamPasta</h1>
+<!-- ═══════════════════════════════════════
+     MAIN WINDOW
+════════════════════════════════════════ -->
+<div id="main-window">
 
-    <div class="box">
-        <h2 style="color:red;">WARNING!</h2>
-        <h2>Heads up! Some pastas here might not be suitable for everyone. Turn on Safe Mode if you want a safer browsing experience.</h2>
-    </div>
-        
-    <br><br>
+    <!-- Window chrome -->
+    <div class="window">
 
-    <div class="homepage-boxes">
-        <a href="/pastas.html?category=%2BREP" style="all: unset; cursor: pointer;">
-            <div class="box">
-                <h2>+REP</h2>
+        <!-- Title bar -->
+        <div class="title-bar">
+            <span class="title-bar-text">
+                <!-- Inline SVG "pasta bowl" icon -->
+                <svg class="title-bar-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="7" cy="9" rx="6" ry="3" fill="#ffd080"/>
+                    <path d="M1 9 Q2 5 7 4 Q12 5 13 9" stroke="#c08020" stroke-width="1" fill="none"/>
+                    <line x1="4" y1="2" x2="4" y2="5" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="7" y1="1" x2="7" y2="4" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="10" y1="2" x2="10" y2="5" stroke="#ffffff" stroke-width="1.2"/>
+                </svg>
+                SteamPasta
+            </span>
+            <div class="title-bar-controls">
+                <div class="tb-btn" title="Minimize">_</div>
+                <div class="tb-btn" title="Maximize">&#9633;</div>
+                <div class="tb-btn" title="Close" style="font-size:10px;">&#10005;</div>
             </div>
-        </a>
+        </div>
 
-        <br> <br>
+        <!-- Menu bar -->
+        <div class="menu-bar">
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+            <a href="/pastas.html?category=%2BREP"  class="menu-item">+REP</a>
+            <a href="/pastas.html?category=ROASTS"  class="menu-item">Roasts</a>
+            <a href="/pastas.html?category=RANDOM"  class="menu-item">Random</a>
+            <a href="/pastas.html?category=CHRISTMAS" class="menu-item">Christmas</a>
+            <a href="/pastas.html?category=NSFW" id="nsfw1" class="menu-item">NSFW</a>
+            <span class="menu-item" style="margin-left:auto; display:flex; gap:4px; padding-right:2px;">
+                <button id="smOn"  style="color:#cc0000;" onclick="safeModeOn()">&#128275; Safe Mode</button>
+                <button id="smOff" style="color:#006600;" onclick="safeModeOff()">&#128274; Safe Mode</button>
+            </span>
+        </div>
 
-        <a href="/pastas.html?category=ROASTS" style="all: unset; cursor: pointer;">
-            <div class="box">
-                <h2>ROASTS</h2>
+        <!-- Window body -->
+        <div class="window-body">
+
+            <!-- H1 -->
+            <h1>SteamPasta</h1>
+            <div class="win-sep"></div>
+
+            <!-- Warning notice -->
+            <div class="box-warning">
+                <span class="warn-icon">&#9888;</span>
+                <p>
+                    <strong>WARNING!</strong><br>
+                    Some pastas here might not be suitable for everyone.
+                    Enable <em>Safe Mode</em> above for a safer browsing experience.
+                </p>
             </div>
-        </a>
 
-        <br> <br>
+            <!-- Category buttons -->
+            <div class="panel-sunken">
+                <h2 style="margin-bottom:6px;">Browse Categories</h2>
+                <div class="category-grid">
 
-        <a href="/pastas.html?category=RANDOM" style="all: unset; cursor: pointer;">
-            <div class="box">
-                <h2>RANDOM</h2>
+                    <a href="/pastas.html?category=%2BREP" class="category-btn">
+                        <span class="category-icon">&#128077;</span>
+                        +REP
+                    </a>
+
+                    <a href="/pastas.html?category=ROASTS" class="category-btn">
+                        <span class="category-icon">&#128293;</span>
+                        ROASTS
+                    </a>
+
+                    <a href="/pastas.html?category=RANDOM" class="category-btn">
+                        <span class="category-icon">&#127922;</span>
+                        RANDOM
+                    </a>
+
+                    <a href="/pastas.html?category=CHRISTMAS" class="category-btn">
+                        <span class="category-icon">&#127876;</span>
+                        CHRISTMAS
+                    </a>
+
+                    <a href="/pastas.html?category=NSFW" class="category-btn" id="nsfw2">
+                        <span class="category-icon">&#128286;</span>
+                        NSFW
+                    </a>
+
+                </div>
             </div>
-        </a>
 
-        <br> <br>
-
-        <a href="/pastas.html?category=CHRISTMAS" style="all: unset; cursor: pointer;">
-            <div class="box">
-                <h2>CHRISTMAS</h2>
+            <!-- Submit box -->
+            <div class="box-submit">
+                <span class="submit-icon">&#128196;</span>
+                <p>
+                    <strong style="color:#004d00;">Want to submit a pasta?</strong><br>
+                    Leave a comment on our
+                    <a target="_blank" href="https://steamcommunity.com/groups/steampastalib">Steam group</a>!
+                </p>
             </div>
-        </a>
 
-        <br> <br>
+        </div><!-- /window-body -->
 
-        <a href="/pastas.html?category=NSFW" style="all: unset; cursor: pointer;" id="nsfw2">
-            <div class="box">
-                <h2>NSFW</h2>
-            </div>
-        </a>
-    </div>
+        <!-- Status bar -->
+        <div class="status-bar">
+            <span class="status-item">Ready</span>
+            <span class="status-item">SteamPasta v1.0</span>
+        </div>
 
-    <br><br>
+    </div><!-- /window -->
 
-    <div class="box">
-        <h2 style="color: green;">Want to submit a pasta?</h2>
-        <h2>Leave a comment with your pasta on our <a target="_blank" href="https://steamcommunity.com/groups/steampastalib" style="color: blue;">steam group!</a></h2>
-    </div>
+</div><!-- /main-window -->
 
-    <script src="scripts/safemode.js"></script>
+<!-- ═══════════════════════════════════════
+     TASKBAR
+════════════════════════════════════════ -->
+<div id="taskbar">
+    <a href="/index.html" id="start-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="5.5" height="5.5" fill="#ff4444"/>
+            <rect x="7.5" y="1" width="5.5" height="5.5" fill="#44cc44"/>
+            <rect x="1" y="7.5" width="5.5" height="5.5" fill="#4444ff"/>
+            <rect x="7.5" y="7.5" width="5.5" height="5.5" fill="#ffcc00"/>
+        </svg>
+        Start
+    </a>
+    <div class="taskbar-sep"></div>
+    <a href="/pastas.html?category=%2BREP"   class="taskbar-btn">+REP</a>
+    <a href="/pastas.html?category=ROASTS"   class="taskbar-btn">ROASTS</a>
+    <a href="/pastas.html?category=RANDOM"   class="taskbar-btn">RANDOM</a>
+    <a href="/pastas.html?category=CHRISTMAS" class="taskbar-btn">CHRISTMAS</a>
+    <a href="/pastas.html?category=NSFW"     class="taskbar-btn">NSFW</a>
+    <span id="taskbar-clock">12:00 PM</span>
+</div>
+
+<script src="scripts/safemode.js"></script>
+<script>
+    // Live clock in taskbar
+    function updateClock() {
+        const now = new Date();
+        let h = now.getHours(), m = now.getMinutes();
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        document.getElementById('taskbar-clock').textContent =
+            h + ':' + String(m).padStart(2, '0') + ' ' + ampm;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>
+
 </body>
 </html>
