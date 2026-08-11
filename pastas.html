@@ -3,29 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Iosevka+Charon+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
-    </style>
     <link rel="stylesheet" href="style.css">
     <title>SteamPasta</title>
 </head>
 <body>
-    <div>
-        <a href="/index.html"><button>SteamPasta</button></a>
-        <a href="/pastas.html?category=%2BREP"><button>+REP</button></a>
-        <a href="/pastas.html?category=ROASTS"><button>ROASTS</button></a>
-        <a href="/pastas.html?category=RANDOM"><button>RANDOM</button></a>
-        <a href="/pastas.html?category=CHRISTMAS"><button>CHRISTMAS</button></a>
-        <a href="/pastas.html?category=NSFW" id="nsfw1"><button>NSFW</button></a>
-        <button id="smOn" style="color: red;" onclick="safeModeOn()">🔓 SAFE MODE</button>
-        <button id="smOff" style="color: green;" onclick="safeModeOff()">🔒 SAFE MODE</button>
-    </div>
 
-    <h1>SteamPasta</h1>
+<!-- ═══════════════════════════════════════
+     MAIN WINDOW
+════════════════════════════════════════ -->
+<div id="main-window">
 
-    <div id="container"></div>
+    <div class="window">
 
-    <script src="scripts/safemode.js"></script>
-    <script src="app.js"></script>
+        <!-- Title bar -->
+        <div class="title-bar">
+            <span class="title-bar-text">
+                <svg class="title-bar-icon" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="7" cy="9" rx="6" ry="3" fill="#ffd080"/>
+                    <path d="M1 9 Q2 5 7 4 Q12 5 13 9" stroke="#c08020" stroke-width="1" fill="none"/>
+                    <line x1="4" y1="2" x2="4" y2="5" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="7" y1="1" x2="7" y2="4" stroke="#ffffff" stroke-width="1.2"/>
+                    <line x1="10" y1="2" x2="10" y2="5" stroke="#ffffff" stroke-width="1.2"/>
+                </svg>
+                SteamPasta — Pasta Browser
+            </span>
+            <div class="title-bar-controls">
+                <div class="tb-btn" title="Minimize">_</div>
+                <div class="tb-btn" title="Maximize">&#9633;</div>
+                <a href="/index.html" class="tb-btn" title="Close" style="font-size:10px; text-decoration:none; color:#000;">&#10005;</a>
+            </div>
+        </div>
+
+        <!-- Menu bar -->
+        <div class="menu-bar">
+            <span class="menu-item">File</span>
+            <span class="menu-item">Edit</span>
+            <span class="menu-item">View</span>
+            <a href="/pastas.html?category=%2BREP"    class="menu-item">+REP</a>
+            <a href="/pastas.html?category=ROASTS"    class="menu-item">Roasts</a>
+            <a href="/pastas.html?category=RANDOM"    class="menu-item">Random</a>
+            <a href="/pastas.html?category=CHRISTMAS" class="menu-item">Christmas</a>
+            <a href="/pastas.html?category=NSFW" id="nsfw1" class="menu-item">NSFW</a>
+            <span class="menu-item" style="margin-left:auto; display:flex; gap:4px; padding-right:2px;">
+                <button id="smOn"  style="color:#cc0000;" onclick="safeModeOn()">&#128275; Safe Mode</button>
+                <button id="smOff" style="color:#006600;" onclick="safeModeOff()">&#128274; Safe Mode</button>
+            </span>
+        </div>
+
+        <!-- Window body -->
+        <div class="window-body">
+            <h1 id="page-title">Pastas</h1>
+            <div class="win-sep"></div>
+
+            <!-- Pasta list -->
+            <div class="panel-sunken">
+                <div id="container"></div>
+            </div>
+
+        </div>
+
+        <!-- Status bar -->
+        <div class="status-bar">
+            <span class="status-item" id="status-text">Loading pastas...</span>
+            <span class="status-item">SteamPasta v1.0</span>
+        </div>
+
+    </div><!-- /window -->
+
+</div><!-- /main-window -->
+
+<!-- ═══════════════════════════════════════
+     TASKBAR
+════════════════════════════════════════ -->
+<div id="taskbar">
+    <a href="/index.html" id="start-btn">
+        <svg width="14" height="14" viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="5.5" height="5.5" fill="#ff4444"/>
+            <rect x="7.5" y="1" width="5.5" height="5.5" fill="#44cc44"/>
+            <rect x="1" y="7.5" width="5.5" height="5.5" fill="#4444ff"/>
+            <rect x="7.5" y="7.5" width="5.5" height="5.5" fill="#ffcc00"/>
+        </svg>
+        Start
+    </a>
+    <div class="taskbar-sep"></div>
+    <a href="/pastas.html?category=%2BREP"   class="taskbar-btn">+REP</a>
+    <a href="/pastas.html?category=ROASTS"   class="taskbar-btn">ROASTS</a>
+    <a href="/pastas.html?category=RANDOM"   class="taskbar-btn">RANDOM</a>
+    <a href="/pastas.html?category=CHRISTMAS" class="taskbar-btn">CHRISTMAS</a>
+    <a href="/pastas.html?category=NSFW"     class="taskbar-btn">NSFW</a>
+    <span id="taskbar-clock">12:00 PM</span>
+</div>
+
+<script src="scripts/safemode.js"></script>
+<script src="app.js"></script>
+<script>
+    // Set page title from category param
+    const _params = new URLSearchParams(window.location.search);
+    const _cat = _params.get('category');
+    if (_cat) {
+        document.getElementById('page-title').textContent = decodeURIComponent(_cat) + ' Pastas';
+        document.title = 'SteamPasta — ' + decodeURIComponent(_cat);
+    }
+
+    // Live clock
+    function updateClock() {
+        const now = new Date();
+        let h = now.getHours(), m = now.getMinutes();
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        document.getElementById('taskbar-clock').textContent =
+            h + ':' + String(m).padStart(2, '0') + ' ' + ampm;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+</script>
+
 </body>
 </html>
